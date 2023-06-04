@@ -1,0 +1,22 @@
+cd /opt/040423_evening/Katrina
+nano taskKatrina.sh
+
+
+#!/bin/bash
+
+current_date=$(date +"%H%M%S")
+
+for run in {1..10}
+do
+	
+    task=$run
+    filename="${task}${current_date}.txt"
+    touch $filename
+ 
+
+chmod 744 taskKatrina.sh
+touch output.txt
+crontab -l
+crontab -e
+
+*/15 * * * * /opt/040423_evening/Katrina/taskKatrina.sh >> /opt/040423_evening/Katrina/output.txt
